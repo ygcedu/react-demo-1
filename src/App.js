@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const App = ()=>{
+let n = 0;
+const App = () => {
     return (
-        // 相当于React.CreateElement('div', null, 'App组件')
-        <div>App组件</div>
+        React.createElement("div", null, [n,
+            React.createElement("button", {
+                onClick: () => {
+                    n += 1;
+                    console.log(n);
+                    ReactDOM.render(App(), document.querySelector("#root"));
+                }
+            }, "+1")
+        ])
     )
 }
 
